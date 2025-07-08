@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 
-const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'avhealth2025-whatsapp';
+import { getEnvVar } from '../config';
+
+const VERIFY_TOKEN = getEnvVar('VERIFY_TOKEN', 'avhealth2025-whatsapp');
 
 export const verifyWebhook = (req: Request, res: Response) => {
   const mode = req.query['hub.mode'];
